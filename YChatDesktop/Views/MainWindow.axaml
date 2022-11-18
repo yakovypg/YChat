@@ -1,0 +1,189 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:YChatDesktop.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+        x:Class="YChatDesktop.Views.MainWindow"
+        Icon="/Assets/Icon.png"
+        Title="YChat"
+		Width="600" Height="450"
+		MinWidth="500" MinHeight="300">
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<Window.Styles>
+		<Style Selector="TextBlock.Header">
+			<Setter Property="FontSize" Value="16"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+		</Style>
+		<Style Selector="TextBlock.h3">
+			<Setter Property="FontSize" Value="15"/>
+			<Setter Property="Margin" Value="0, 0, 0, 5"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+		<Style Selector="TextBlock.h4">
+			<Setter Property="FontSize" Value="13"/>
+		</Style>
+		<Style Selector="TextBlock.h5">
+			<Setter Property="FontSize" Value="10"/>
+		</Style>
+		<Style Selector="TextBlock.h6">
+			<Setter Property="FontSize" Value="9"/>
+		</Style>
+		<Style Selector="TextBox">
+			<Setter Property="FontSize" Value="15"/>
+			<Setter Property="Margin" Value="0, 0, 0, 5"/>
+		</Style>
+		<Style Selector="Button">
+			<Setter Property="Margin" Value="0"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		</Style>
+	</Window.Styles>
+
+	<Grid>
+		<Grid Background="White">
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition Height="168"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="300"/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Grid.Column="1" Classes="Header" Text="{Binding AppVersion}"/>
+
+			<Border Grid.Row="1" Grid.Column="1" BorderBrush="DarkGray" BorderThickness="1">
+				<Border BorderBrush="Gray" BorderThickness="3" Background="AliceBlue">
+					<StackPanel Margin="10, 10, 10, 0">
+						<DockPanel>
+							<TextBlock Classes="h3" Text="Nick" Width="40" DockPanel.Dock="Left"/>
+							<TextBox Text="{Binding Nick}"/>
+						</DockPanel>
+						<DockPanel>
+							<TextBlock Classes="h3" Text="Port" Width="40" DockPanel.Dock="Left"/>
+							<TextBox Text="{Binding Port}"/>
+						</DockPanel>
+						<DockPanel>
+							<TextBlock Classes="h3" Text="Host" Width="40" DockPanel.Dock="Left"/>
+							<TextBox Text="{Binding Host}"/>
+						</DockPanel>
+						<Button
+							Content="Connect"
+							HorizontalAlignment="Center"
+							Margin="0, 2, 0, 10"
+							Command="{Binding ConnectToServerCommand}">
+						</Button>
+					</StackPanel>
+				</Border>
+			</Border>
+		</Grid>
+
+		<DockPanel IsVisible="{Binding IsConnectedToServer}">
+			<Grid Background="AliceBlue" DockPanel.Dock="Bottom" Margin="5, 0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition Width="5"/>
+					<ColumnDefinition Width="70"/>
+					<ColumnDefinition Width="5"/>
+					<ColumnDefinition Width="70"/>
+					<ColumnDefinition Width="5"/>
+					<ColumnDefinition Width="70"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBox Name="MessageTextBox" Watermark="Your message" Margin="0, 5" Text="{Binding Message, Mode=TwoWay}">
+					<TextBox.KeyBindings>
+						<KeyBinding
+							Gesture="Enter"
+							Command="{Binding SendMessageCommand}"
+							CommandParameter="{Binding ElementName=MessageTextBox, Path=Text}">
+						</KeyBinding>
+					</TextBox.KeyBindings>
+				</TextBox>
+
+				<Button
+					Grid.Column="2"
+					Content="Send"
+					Width="70"
+					Command="{Binding SendMessageCommand}"
+					CommandParameter="{Binding ElementName=MessageTextBox, Path=Text}">
+				</Button>
+
+				<Button Grid.Column="4" Content="Clear" Width="70" Command="{Binding ClearChatBoardCommand}"/>
+				<Button Grid.Column="6" Content="Exit" Width="70" Command="{Binding DisconnectFromServerCommand}"/>
+			</Grid>
+
+			<ListBox Margin="5" Items="{Binding ChatMessages}">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition/>
+								<ColumnDefinition Width="0.5*"/>
+								<ColumnDefinition/>
+							</Grid.ColumnDefinitions>
+
+							<Grid Grid.Column="{Binding Dock}">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="auto"/>
+									<ColumnDefinition/>
+								</Grid.ColumnDefinitions>
+
+								<Ellipse Width="40" Height="40" VerticalAlignment="Bottom">
+									<Ellipse.Fill>
+										<ImageBrush Source="/Assets/Avatar.png"/>
+									</Ellipse.Fill>
+								</Ellipse>
+
+								<Border Grid.Column="1"
+										BorderBrush="DarkRed"
+										BorderThickness="1"
+										Margin="5, 0, 0, 0"
+										CornerRadius="5"
+										Background="{Binding Background}">
+									<Grid Margin="5">
+										<Grid.RowDefinitions>
+											<RowDefinition/>
+											<RowDefinition/>
+											<RowDefinition/>
+										</Grid.RowDefinitions>
+
+										<TextBlock
+											Grid.Row="0"
+											Classes="h5"
+											Text="{Binding Sender}"
+											Foreground="Blue"
+											HorizontalAlignment="Center">
+										</TextBlock>
+										<TextBlock
+											Grid.Row="1"
+											Classes="h4"
+											Text="{Binding Text}"
+											TextWrapping="Wrap"
+											Margin="0, 3, 0, 6">
+										</TextBlock>
+										<TextBlock
+											Grid.Row="2"
+											Classes="h6"
+											Text="{Binding SentDatePresenter}"
+											Foreground="Brown"
+											HorizontalAlignment="Right">
+										</TextBlock>
+									</Grid>
+								</Border>
+							</Grid>
+						</Grid>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</DockPanel>
+	</Grid>
+
+</Window>
