@@ -1,9 +1,9 @@
 ﻿using ChatEngine.ClientSide;
 using ChatEngine.Logging;
-using YChat.Configuration;
-using YChat.Parsing;
 using System.Reflection;
 using System.Text;
+using YChat.Configuration;
+using YChat.Parsing;
 
 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 

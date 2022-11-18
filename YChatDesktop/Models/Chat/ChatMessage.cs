@@ -10,7 +10,7 @@ namespace YChatDesktop.Models.Chat
     {
         public string? Text { get; }
         public string Sender { get; }
-        
+
         public DateTime SentDate { get; }
         public string SentDatePresenter => SentDate.ToShortTimeString();
 
