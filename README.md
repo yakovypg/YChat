@@ -5,16 +5,32 @@ so that it is convenient for both command-line lovers and people who prefer grap
 
 ## Start of use
 
-### Basics
+### Release usage
 
-You can execute the command by sending a message with the command at the beginning. The command must start with the 
-character '/' followed by the command name. If you want to send a message that starts with the character '/', but which 
-is not a command, start the message with two consecutive characters '/'.
+To use the built project, follow these steps:
+1. Choose the release.
+2. Download and unzip the archive with the version for your operating system and architecture.
+3. Move the folder to any place convenient for you. The tool does not create any files outside 
+of its directory.
+4. Go to this folder and run the executable file.
 
-There is support for the following commands
-- Exit from chat: /exit
-- Clear chat: /clear
-- Get chat participants: /list
+You can also create a shortcut to the executable file and put it in a convenient place for you.
+
+Please note that if you want to run the CLI version of the tool, run the executable file from 
+the console. For example, you can find out the version of the tool using the on of the command
+below.
+
+On Windows.
+
+```
+ypdf --version
+```
+
+On Linux and Mac.
+
+```
+./ypdf --version
+```
 
 ### Build from source
 
@@ -90,6 +106,17 @@ The project is developed for the .NET 6.0 platform. To continue development, you
 Runtime.
 
 ## How to use CLI client application
+
+### Basics
+
+You can execute the command by sending a message with the command at the beginning. The command must start with the 
+character '/' followed by the command name. If you want to send a message that starts with the character '/', but which 
+is not a command, start the message with two consecutive characters '/'.
+
+There is support for the following commands
+- Exit from chat: /exit
+- Clear chat: /clear
+- Get chat participants: /list
 
 ### Get help
 
