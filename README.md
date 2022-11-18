@@ -16,6 +16,74 @@ There is support for the following commands
 - Clear chat: /clear
 - Get chat participants: /list
 
+### Build from source
+
+We will build the project using [dotnet](https://dotnet.microsoft.com/en-us/). But you can 
+also use the IDE tools, then the project will be built in one click of the corresponding 
+button.
+
+First, clone the repository.
+
+```
+git clone https://github.com/yakovypg/YChat.git
+```
+
+Go to the project folder.
+
+```
+cd YChat
+```
+
+[Build](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-build) the project.
+
+```
+dotnet build -c Release
+```
+
+Now you can already run, for example, the server.
+
+```
+dotnet run --project Server/YChatServer
+```
+
+You can also [publish](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish) 
+the project. For example, we will publish the client CLI application.
+
+```
+dotnet publish Client/YChatDesktop -c Release -o pathToPublishFolder
+```
+
+The published project is runtime-dependent. That is, to run it, it is necessary that .NET 
+runtime is installed on your system. You can run the tool using the following command:
+
+```
+dotnet pathToPublishFolder/YChatDesktop.dll
+```
+
+You can also publish the project with the --self-contained parameter. Then, to run the tool, 
+it is not required that .NET runtime is installed on your system. To publish a project with 
+this parameter, you should also specify the target platform and architecture using -r 
+parameter. For example, we will publish a project for linux-x64.
+
+```
+dotnet publish YChat/YChatDesktop -c Release -o pathToPublishFolder --self-contained True -r linux-x64
+```
+
+A published project can be run without dotnet. To do this, navigate to the folder where you 
+published the project and enter one of the commands below.
+
+On Windows.
+
+```
+YChatDesktop
+```
+
+On Linux and Mac.
+
+```
+./YChatDesktop
+```
+
 ### Development
 
 The project is developed for the .NET 6.0 platform. To continue development, you will need the .NET SDK and .NET 
@@ -40,6 +108,8 @@ YChat --version
 ```
 
 ### Connect to the chat
+
+First, make sure that the server is running.
 
 To connect to the chat, you need to specify the host and port using the -h and -p parameters. You can also 
 specify your nickname using the -n parameter.
