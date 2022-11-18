@@ -11,17 +11,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configurat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{C01DCA63-2C16-4AA2-A01E-3DE493515132}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatEngine", "Core\ChatEngine\ChatEngine.csproj", "{30030FCC-66D9-40A9-8E9C-B31BCBAD7D6C}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30030FCC-66D9-40A9-8E9C-B31BCBAD7D6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30030FCC-66D9-40A9-8E9C-B31BCBAD7D6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30030FCC-66D9-40A9-8E9C-B31BCBAD7D6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30030FCC-66D9-40A9-8E9C-B31BCBAD7D6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1B1B861F-78BD-4ED7-94C5-E4DA6D8A90A3} = {F53E3CA2-B813-46BF-988D-A9B8925E7600}
+		{30030FCC-66D9-40A9-8E9C-B31BCBAD7D6C} = {0CD5CECF-CCC0-4866-B703-13A07ABE9EE6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {454EE760-9067-43DA-B4A1-956F7C2B69CA}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Configuration\SharedConfig\SharedConfig.projitems*{1b1b861f-78bd-4ed7-94c5-e4da6d8a90a3}*SharedItemsImports = 13
+		Configuration\SharedConfig\SharedConfig.projitems*{30030fcc-66d9-40a9-8e9c-b31bcbad7d6c}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

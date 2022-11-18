@@ -9,5 +9,6 @@
     <Import_RootNamespace>SharedConfig</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)NetConfig.cs" />
   </ItemGroup>
 </Project>
