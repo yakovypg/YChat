@@ -1,1 +1,2 @@
 # YChat
+Simple group chat.
