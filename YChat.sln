@@ -9,9 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{0CD5CECF-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{F53E3CA2-B813-46BF-988D-A9B8925E7600}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{C01DCA63-2C16-4AA2-A01E-3DE493515132}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatEngine", "Core\ChatEngine\ChatEngine.csproj", "{30030FCC-66D9-40A9-8E9C-B31BCBAD7D6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatEngine", "Core\ChatEngine\ChatEngine.csproj", "{30030FCC-66D9-40A9-8E9C-B31BCBAD7D6C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{8ED34CBE-29C9-4B32-B1C2-BC865CB8AFCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
