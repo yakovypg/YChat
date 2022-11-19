@@ -142,7 +142,7 @@ To connect to the chat, you need to specify the host and port using the -h and -
 specify your nickname using the -n parameter.
 
 ```
-YChat -p 5000 -h 127.0.0.1 -n nick
+YChat -P 5000 -H 127.0.0.1 -n nick
 ```
 
 By default, the host is 127 and the port is 5000. If you have started the server with default parameters on the 
