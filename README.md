@@ -23,13 +23,13 @@ below.
 On Windows.
 
 ```
-ypdf --version
+YChat --version
 ```
 
 On Linux and Mac.
 
 ```
-./ypdf --version
+./YChat --version
 ```
 
 ### Build from source
