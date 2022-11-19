@@ -15,7 +15,7 @@ namespace ChatEngine.Sockets
         public Task<Socket> AcceptSocketAsync();
         public ValueTask<Socket> AcceptSocketAsync(CancellationToken cancellationToken);
 
-        public Task<TcpClient> AcceptTcpClientAsync();
-        public ValueTask<TcpClient> AcceptTcpClientAsync(CancellationToken cancellationToken);
+        public Task<NetTcpClient> AcceptTcpClientAsync();
+        public ValueTask<NetTcpClient> AcceptTcpClientAsync(CancellationToken cancellationToken);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using ChatEngine.Configuration;
 using ChatEngine.Logging;
 using ChatEngine.Messaging;
-using System.Net.Sockets;
+using ChatEngine.Sockets;
 using System.Text.Json;
 
 namespace ChatEngine.ClientSide
@@ -29,7 +29,7 @@ namespace ChatEngine.ClientSide
 
         public async Task ConnentToServerAsync()
         {
-            using var client = new TcpClient();
+            using var client = new NetTcpClient();
 
             StreamReader? reader = null;
             StreamWriter? writer = null;

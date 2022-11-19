@@ -1,6 +1,6 @@
 ﻿using ChatEngine.Messaging;
 using ChatEngine.Models;
-using System.Net.Sockets;
+using ChatEngine.Sockets;
 using System.Text.Json;
 
 namespace ChatEngine.SeverSide
@@ -11,12 +11,12 @@ namespace ChatEngine.SeverSide
         private readonly StreamReader _reader;
 
         private readonly IServer _server;
-        private readonly TcpClient _tcpClient;
+        private readonly NetTcpClient _tcpClient;
 
         public string ClientId { get; }
         public IChatUser ChatUser { get; private set; }
 
-        public ClientConnector(string clientId, TcpClient tcpClient, IServer server)
+        public ClientConnector(string clientId, NetTcpClient tcpClient, IServer server)
         {
             _writer = new StreamWriter(tcpClient.GetStream());
             _reader = new StreamReader(tcpClient.GetStream());

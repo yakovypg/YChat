@@ -1,7 +1,6 @@
 ﻿using ChatEngine.Logging;
 using ChatEngine.Sockets;
 using System.Net;
-using System.Net.Sockets;
 
 namespace ChatEngine.SeverSide
 {
@@ -36,7 +35,7 @@ namespace ChatEngine.SeverSide
 
                 while (true)
                 {
-                    TcpClient tcpClient = await _listener.AcceptTcpClientAsync();
+                    NetTcpClient tcpClient = await _listener.AcceptTcpClientAsync();
 
                     string id = GetNextClientId();
                     IClientConnector client = new ClientConnector(id, tcpClient, this);

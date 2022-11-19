@@ -78,12 +78,12 @@ namespace ChatEngine.Sockets
                 : throw new InvalidOperationException("Net stopped.");
         }
 
-        public Task<TcpClient> AcceptTcpClientAsync()
+        public Task<NetTcpClient> AcceptTcpClientAsync()
         {
             return AcceptTcpClientAsync(CancellationToken.None).AsTask();
         }
 
-        public ValueTask<TcpClient> AcceptTcpClientAsync(CancellationToken cancellationToken)
+        public ValueTask<NetTcpClient> AcceptTcpClientAsync(CancellationToken cancellationToken)
         {
             return WaitAndWrap(AcceptSocketAsync(cancellationToken));
         }
@@ -93,10 +93,10 @@ namespace ChatEngine.Sockets
             _serverSocket ??= new Socket(_serverSocketEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
         }
 
-        private static async ValueTask<TcpClient> WaitAndWrap(ValueTask<Socket> task)
+        private static async ValueTask<NetTcpClient> WaitAndWrap(ValueTask<Socket> task)
         {
             Socket socket = await task.ConfigureAwait(false);
-            TcpClient client = new() { Client = socket };
+            NetTcpClient client = new() { ClientSocket = socket };
 
             return client;
         }
