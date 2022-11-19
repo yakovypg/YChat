@@ -10,7 +10,7 @@ int port = SharedConfig.NetConfig.DEFAULT_PORT;
 
 if (args.Length == 1)
 {
-    if (!int.TryParse(Console.ReadLine(), out port))
+    if (!int.TryParse(args[0], out port))
     {
         Console.WriteLine("Error: incorrect port.");
         return;
